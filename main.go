@@ -10,7 +10,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"save-to-disk/signal"
 	"strings"
 
@@ -21,18 +20,6 @@ import (
 	"github.com/pion/webrtc/v4/pkg/media/ivfwriter"
 	"github.com/pion/webrtc/v4/pkg/media/oggwriter"
 )
-
-func convertIVFtoJPEG(inputFile string, outputPattern string) error {
-	cmd := exec.Command("ffmpeg", "-i", inputFile, "-vf", "fps=1", outputPattern)
-
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	if err := cmd.Run(); err != nil {
-		return err
-	}
-	return nil
-}
 
 func saveToDisk(i media.Writer, track *webrtc.TrackRemote) {
 	defer func() {
