@@ -1,5 +1,8 @@
 import os
 import subprocess
+from ultralytics import YOLO
+
+model = YOLO('yolov8n.pt')
 
 def convert_ivf_to_jpegs(input_ivf, output_pattern):
     ffmpeg_command = [
@@ -21,6 +24,7 @@ def find_jpeg_frames(directory):
         for file in files:
             if file.endswith(".jpg") or file.endswith(".jpeg"):
                 jpeg_frames.append(os.path.join(root, file))
+                
     return jpeg_frames
 
 directory_path = "/Users/dan/Desktop/softwareDev/save-to-disk"
@@ -36,7 +40,9 @@ jpeg_files = find_jpeg_frames(directory_path)
 if jpeg_files:
     print("Success! JPEG files found:")
     for jpeg_file in jpeg_files:
-        print(jpeg_file)
+        results = model(directory_path)
+        success = model.export(format='onnx')
+        #  print(jpeg_file)
     # Add your code to interact with the AI processing application here
 else:
     print("No JPEG files found.")
