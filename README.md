@@ -1,11 +1,4 @@
 # save-to-disk
-save-to-disk is a simple application that shows how to record your webcam/microphone using Pion WebRTC and save VP8/Opus to disk.
-
-If you wish to save VP8/Opus inside the same file see [save-to-webm](https://github.com/pion/example-webrtc-applications/tree/master/save-to-webm)
-
-If you wish to save AV1 instead see [save-to-disk-av1](https://github.com/pion/webrtc/tree/master/examples/save-to-disk-av1)
-
-You can then send this video back to your browser using [play-from-disk](https://github.com/pion/example-webrtc-applications/tree/master/play-from-disk)
 
 ## Instructions
 ### Download save-to-disk
@@ -33,4 +26,6 @@ Copy the text that `save-to-disk` just emitted and copy into second text area
 In the folder you ran `save-to-disk` you should now have a file `output-1.ivf` play with your video player of choice!
 > Note: In order to correctly create the files, the remote client (JSFiddle) should be closed. The Go example will automatically close itself.
 
-Congrats, you have used Pion WebRTC! Now start building something cool
+### Run jpegs.py
+this will convert the output.ivf file (remember to terminate the webrtc code by pressing ctrl C) into jpeg images, the yolo object detection then runs object detection on these images.
+
